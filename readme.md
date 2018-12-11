@@ -1,11 +1,9 @@
-# XDF 2018 Workshop
-## SDSoC, Computer Vision, and Machine Learning
+# Xilinx Machine Learning Live
+## Creating ML vision based systems with SDSoC
 
 ### Introduction
 ------------
-
-Welcome to the XDF 2018 SDSoC, machine learning, and computer vision
-workshop!
+Welcome to the creating Machine Learning vision based systems with SDSoC lab!
 
 The Xilinx SDx development environment is uniquely suited to
 developing systems combining hardware-accelerated machine learning,
@@ -118,7 +116,7 @@ should prompt you to log in.
 Log in with the following credentials:
 
 -   User: **ubuntu**
--   Password: **xdf_sdsoc**
+-   Password: **sand_xdfs**
 
 Note that it is possible that the username and password you were
 provided for your use during the session may not match the above. In the
@@ -349,10 +347,10 @@ default, but you now need to add your YUYV to RGB function.
 
 1. Right click on the 'src' folder and select **Import**, then **General** -\> **File System**.
 
-2. Browse to the directory **/home/ubuntu/XDF_Labs/SDSoC/lab_files/template** and select the file **colorconvert.cpp**, importing it into the **src** folder of the DPU library.
+2. Browse to the directory **/home/ubuntu/XDF_Labs/SDSoC/lab_files/template** and select the file **yuyv2rgb.cpp**, importing it into the **src** folder of the DPU library.
 
 3. Open the file by double clicking on it.
-   Note that it contains the function to accelerate your YUYV to RGB conversion, called *colorconvert_accel*. However, also note the TODO notice at the bottom. Every accelerated function in SDSoC must have one (or more) **call sites**. In other words, it can't be accelerated in a vacuum, it must be called by something. Add a wrapper around that function (*hint: this is just the same function with a different name, passing its data directly to the colorconvert_accel function*). Something like:
+   Note that it contains the function to accelerate your YUYV to RGB conversion, called *yuyv2rgb_accel*. However, also note the TODO notice at the bottom. Every accelerated function in SDSoC must have one (or more) **call sites**. In other words, it can't be accelerated in a vacuum, it must be called by something. Add a wrapper around that function (*hint: this is just the same function with a different name, passing its data directly to the colorconvert_accel function*). Something like:
 
 ``` {.c frame="lines" framesep="2mm"}
 // Caller for the conversion function
@@ -361,13 +359,13 @@ void yuyv2rgb(yuyv_data *yuyv,
               int height,
               int width)
 {
-    colorconvert_accel(yuyv, rgb, height, width);
+    yuyv2rgb_accel(yuyv, rgb, height, width);
 }
 ```
 
 4. Save the file.
 
-    Your last step is to tell SDx you want to move the *colorconvert_accel* function to hardware. To do that, from the main project page (which can be opened by double clicking on **project.sdx**)
+    Your last step is to tell SDx you want to move the *yuyv2rgb_accel* function to hardware. To do that, from the main project page (which can be opened by double clicking on **project.sdx**)
 
 5. Click on the lightning bolt icon (circled in the following figure) to select hardware functions to accelerate, and choose 'colorconvert_accel' from the list.
 
