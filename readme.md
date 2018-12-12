@@ -1,11 +1,10 @@
-# XDF 2018 Workshop
-## SDSoC, Computer Vision, and Machine Learning
+# Machine Learning Live
+## Creating ML vision based systems with SDSoC
 
 ### Introduction
 ------------
 
-Welcome to the XDF 2018 SDSoC, machine learning, and computer vision
-workshop!
+Welcome to the creating Machine Learning vision based systems with SDSoC lab.
 
 The Xilinx SDx development environment is uniquely suited to
 developing systems combining hardware-accelerated machine learning,
@@ -118,7 +117,7 @@ should prompt you to log in.
 Log in with the following credentials:
 
 -   User: **ubuntu**
--   Password: **xdf_sdsoc**
+-   Password: **sand_xdfs**
 
 Note that it is possible that the username and password you were
 provided for your use during the session may not match the above. In the
