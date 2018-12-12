@@ -129,6 +129,14 @@ Open a new terminal as shown in the following figure:
 
 ![Opening a New Terminal over RDP](./images/new_terminal.png)
 
+The DisplayPort controller in the ZU+ devices supports multiple planes. We are
+rendering the video to the "graphics" plane, but the console is on the "overlay"
+plane. To make the overlay plane transparent we can run the modetest command
+as follows (note that this will disable the output on the display; for this reason
+you need to run this as part of the shell script instead of manually):
+
+    modetest -M xlnx -s 38@36:640x480-60@RG24 -w 35:alpha:1 &
+
 ## Provided Design Files
 ---------------------
 
@@ -535,14 +543,6 @@ file system. Run the following commands:
     cp libgstsdxcolorconvert.so \
        libgstsdxfacedetect.so \
        /usr/lib/gstreamer-1.0
-
-The DisplayPort controller in the ZU+ devices supports multiple planes. We are
-rendering the video to the "graphics" plane, but the console is on the "overlay"
-plane. To make the overlay plane transparent we can run the modetest command
-as follows (note that this will disable the output on the display; for this reason
-we recommend you run this as part of the shell script instead of manually):
-
-    modetest -M xlnx -s 38@36:640x480-60@RG24 -w 35:alpha:1 &
 
 Finally, you can launch the gstreamer pipeline for face detection:
 
